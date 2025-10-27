@@ -1,0 +1,12 @@
+# Folder dependensi
+node_modules/
+
+# File konfigurasi yang berisi password
+config/config.json
+
+# File log
+*.log
+npm-debug.log*
+
+# File environment (jika nanti Anda pakai)
+.env
