@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bookRoutes = require('./routes/books'); 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 // 2. Middleware
 app.use(cors());
@@ -19,6 +19,11 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/books', bookRoutes);
+// mount presensi and reports routes
+const presensiRoutes = require('./routes/presensi');
+const reportRoutes = require('./routes/reports');
+app.use('/api/presensi', presensiRoutes);
+app.use('/api/reports', reportRoutes);
 
 app.use((req, res, next) => {
   res.status(404).json({ message: 'Endpoint not found' });
