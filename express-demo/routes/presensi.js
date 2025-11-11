@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const presensiController = require('../controller/presensiController');
+const presensiController = require('../controllers/presensiController');
 const { addUserData } = require('../middleware/permissionMiddleware');
 const { body, validationResult } = require('express-validator');
 router.use(addUserData);
