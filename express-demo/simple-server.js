@@ -4,15 +4,18 @@ const app = express();
 const PORT = 3001;
 const morgan = require("morgan");
 
+
 // Impor router
 const presensiRoutes = require("./routes/presensi");
 const reportRoutes = require("./routes/reports");
 const ruteBuku = require("./routes/books"); // Router dari modul sebelumnya
+const authRoutes = require('./routes/auth');
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev")); // Logger untuk setiap request
+app.use('/api/auth', authRoutes);
 
 // Middleware custom untuk logging waktu request
 app.use((req, res, next) => {
