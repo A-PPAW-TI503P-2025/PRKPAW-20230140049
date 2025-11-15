@@ -1,50 +1,27 @@
-import React, { useState } from 'react';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import LoginPage from './components/LoginPage';
+import RegisterPage from './components/RegisterPage';
+import DashboardPage from './components/DashboardPage';
 
 function App() {
-  const [nama, setNama] = useState('');
-
-  const handleInputChange = (event) => {
-    setNama(event.target.value);
-  };
-  
-  const appStyle = {
-    backgroundColor: '#f0f4f8', 
-    fontFamily: "'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif" 
-  };
-
-  const inputStyle = {
-    padding: '10px',
-    fontSize: '16px',
-    borderRadius: '5px',
-    border: '1px solid #ccc',
-    marginRight: '10px' 
-  };
-  
-  const h1Style = {
-    color: '#8c3838ff' 
-  };
-
   return (
-
-    <div className="App" style={appStyle}>
-      <header className="App-header">
+    <Router>
+      <div>
+        {/* Navigasi ini bisa dihapus jika tidak diperlukan */}
+        <nav className="p-4 bg-gray-100">
+          <Link to="/login" className="mr-4">Login</Link>
+          <Link to="/register">Register</Link>
+        </nav>
         
-        <h1 style={h1Style}>
-          Hello, {nama || 'Pengunjung'}!
-        </h1>
-
-        <input
-          type="text"
-          placeholder="Ketik namamu di sini..."
-          value={nama}
-          onChange={handleInputChange}
-          style={inputStyle}
-        />
-        
-      </header>
-    </div>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/" element={<LoginPage />} /> 
+        </Routes>
+      </div>
+    </Router>
   );
 }
-
 export default App;
